@@ -60,7 +60,7 @@ Endpoint compatível com a API OpenAI (local ou em nuvem) para execução do LLM
 Clone o repositório:
 
 Bash
-git clone https://github.com/Tebaum/digifort-cftv-monitor.git
+git clone https://github.com/Tebaum/asterixco_digifort_monitor
 cd digifort-cftv-monitor
 
 Instale as dependências com uv:
