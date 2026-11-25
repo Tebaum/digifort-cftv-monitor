@@ -55,7 +55,7 @@ Endpoint compatível com a API OpenAI (local ou em nuvem) para execução do LLM
 Clone o repositório:
 
 Bash
-git clone [https://github.com/tebaum/digifort-cftv-monitor.git](https://github.com/tebaum/digifort-cftv-monitor.git)
+git clone https://github.com/tebaum/digifort-cftv-monitor.git
 cd digifort-cftv-monitor
 Instale as dependências com uv:
 
@@ -70,7 +70,7 @@ Exemplo de configuração no .env:
 
 Ini, TOML
 # Configuração do LLM (compatível com OpenAI API)
-OPENAI_API_BASE=[http://127.0.0.1:31415/v1](http://127.0.0.1:31415/v1)
+OPENAI_API_BASE=http://127.0.0.1:31415/v1
 OPENAI_API_KEY=sua_chave_aqui
 MODEL=openai/gemini-3.5-flash
 CREWAI_TRACING_ENABLED=false
