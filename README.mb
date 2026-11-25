@@ -1,4 +1,5 @@
 Markdown
+
 # 📹 Digifort CFTV Monitor — Auditoria Automatizada com CrewAI
 
 Sistema multiagente desenvolvido em **Python** e **CrewAI** para auditoria automatizada de telemetria, disponibilidade, status de gravação e retenção em disco de servidores **Digifort Enterprise**.
@@ -33,7 +34,9 @@ digifort-cftv-monitor/
 ├── .env.example                  # Modelo de variáveis de ambiente
 ├── .gitignore                    # Bloqueio de credenciais e relatórios gerados
 └── pyproject.toml                # Dependências gerenciadas via uv
+
 Fluxo de Execução
+
 main.py aciona a DigifortStatusTool para autenticar via HTTP Basic Auth na API do servidor Digifort.
 
 tools/digifort_api.py extrai câmeras, status e grupos, reconstrói os caminhos das unidades, calcula taxas de disponibilidade e filtra alertas de retenção, gerando um JSON estruturado.
@@ -43,6 +46,7 @@ inspetor_digifort analisa estritamente o JSON coletado, classificando incidentes
 operador_noc redige o documento final boletim_cftv.md com resumo executivo, tabelas de auditoria e plano de ação imediato.
 
 🛠️ Pré-requisitos
+
 Python 3.11+
 
 uv (gerenciador de pacotes e ambientes virtuais)
@@ -52,20 +56,25 @@ Acesso de rede/VPN à porta HTTP da API do Digifort Enterprise (padrão 8601) co
 Endpoint compatível com a API OpenAI (local ou em nuvem) para execução do LLM
 
 ⚙️ Instalação e Configuração
+
 Clone o repositório:
 
 Bash
-git clone https://github.com/tebaum/digifort-cftv-monitor.git
+git clone https://github.com/Tebaum/digifort-cftv-monitor.git
 cd digifort-cftv-monitor
+
 Instale as dependências com uv:
 
 Bash
 uv sync
+
 Configure as variáveis de ambiente:
+
 Copie o arquivo .env.example para .env e preencha com as credenciais do seu ambiente:
 
 Bash
 cp .env.example .env
+
 Exemplo de configuração no .env:
 
 Ini, TOML
@@ -81,14 +90,18 @@ DIGIFORT_SERVER_NAME=Servidor Digifort Principal
 DIGIFORT_USER=usuario_leitura_api
 DIGIFORT_PASS=senha_segura
 DIGIFORT_TIMEOUT=15
+
 ▶️ Como Executar
+
 Com o ambiente configurado e a rede/VPN ativa, execute:
 
 Bash
 uv run python main.py
+
 Ao final da execução, o relatório consolidado será salvo na raiz do projeto como boletim_cftv.md (arquivo ignorado automaticamente pelo .gitignore para preservar a confidencialidade dos dados operacionais).
 
 🔒 Segurança e Boas Práticas
+
 Zero Hardcoding: Nenhuma credencial, endereço IP, topologia ou identificação de ambiente é armazenada no código-fonte.
 
 Proteção de Saídas: O .gitignore bloqueia arquivos .env* e relatórios gerados (boletim_*.md), impedindo vazamento acidental de inventário de câmeras em commits.
