@@ -1,0 +1,24 @@
+{
+  "name": "digifort_cftv_monitor",
+  "process": "sequential",
+  "verbose": true,
+  "agents": [
+    "inspetor_digifort",
+    "operador_noc"
+  ],
+  "tasks": [
+    {
+      "name": "auditoria_telemetria_cftv",
+      "description": "Data/Hora oficial da auditoria: {data_hora_atual}.\n\nDADOS REAIS DA API DIGIFORT:\n{dados_digifort}\n\nCom base EXCLUSIVAMENTE no JSON acima (sem chamar nenhuma ferramenta e sem inventar nenhum item): 1) Apresente os totais exatos de 'total_monitoradas', 'online_e_gravando', 'offline', 'falso_online_sem_gravacao', 'desativadas_no_servidor' e quantidade em 'alerta_baixa_retencao' para cada grupo raiz em 'grupos_monitorados'. 2) Agrupe as câmeras offline por 'unidade_grupo' (e 'grupo_id') comparando a quantidade offline com 'total_cameras_no_grupo' para diferenciar queda total/majoritária da unidade (link/VPN/NVR) de falha pontual de câmera/PoE. 3) Liste literalmente cada câmera offline, falso online ou presente em 'alerta_baixa_retencao' informando 'camera', 'descricao', 'unidade_grupo', 'modelo', 'dias_gravados', 'dias_estimados_meta' e 'horas_gravadas'.",
+      "expected_output": "Relatório técnico fiel aos dados reais fornecidos, contendo o servidor informado no JSON, a data/hora oficial, os totais exatos por grupo, o agrupamento por unidade_grupo e a listagem literal de todas as câmeras offline, sem gravação ou com baixa retenção.",
+      "agent": "inspetor_digifort"
+    },
+    {
+      "name": "gerar_boletim_noc",
+      "description": "Redija o boletim operacional de telemetria CFTV usando EXCLUSIVAMENTE os dados, servidor, datas ({data_hora_atual}), números, nomes de câmeras, descrições, nomes de unidades ('unidade_grupo'), modelos e dias de retenção entregues pelo Inspetor de Telemetria. Use exatamente esta estrutura limpa (sem colocar nome de arquivo no título e sem números antes dos títulos das seções):\n- Título principal: # Boletim Operacional de Telemetria CFTV\n- Metadados: **Data/Hora:** {data_hora_atual} | **Servidor:** (usar o valor exato do campo 'servidor' do JSON)\n- ## Resumo Executivo (tabela com Grupo/Cliente, Total Monitoradas, Online/Gravando, Offline, Falso Online, Baixa Retenção (< 28 dias) e % Disponibilidade)\n- ## Incidentes Críticos (unidades/grupos com queda total/majoritária e câmeras falso online, se houver)\n- ## Falhas Pontuais (câmeras offline isoladas com Câmera, Unidade/Grupo, Descrição, Modelo e Dias Gravados)\n- ## Auditoria de Retenção em Disco (tabela com Grupo/Cliente, Unidade/Grupo, Câmera, Descrição, Dias Gravados, Meta (Dias) e Observação Técnica)\n- ## Plano de Ação para o NOC (ações objetivas baseadas apenas nas falhas e alertas reais identificados).",
+      "expected_output": "Documento Markdown limpo, profissional e 100% fiel aos dados reais da API Digifort, sem nenhum dado inventado.",
+      "agent": "operador_noc",
+      "output_file": "boletim_cftv.md"
+    }
+  ]
+}

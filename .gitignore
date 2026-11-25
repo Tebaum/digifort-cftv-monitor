@@ -1,0 +1,21 @@
+# Ambientes e credenciais
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.pyc
+.crewai/
+
+# Dados reais de clientes e saídas geradas (NUNCA subir)
+entradas/
+*.xlsx
+*.xls
+*.csv
+*.png
+*.jpg
+*.jpeg
+*.pdf
+documentacao_*.md
+boletim_*.md
