@@ -19,3 +19,8 @@ entradas/
 *.pdf
 documentacao_*.md
 boletim_*.md
+boletim_*.html
+
+# Modelos locais temporários e dumps brutos de API
+Modelfile*
+*.json
