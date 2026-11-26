@@ -22,7 +22,7 @@ O projeto utiliza uma **arquitetura híbrida determinística**: um coletor em Py
 ## 🏗️ Arquitetura do Projeto
 
 ```text
-asterixco_digifort_monitor/
+digifort-cftv-monitor/
 ├── agents/
 │   ├── inspetor_digifort.jsonc   # Agente auditor de telemetria e retenção
 │   └── operador_noc.jsonc        # Agente redator do boletim técnico
@@ -61,8 +61,8 @@ asterixco_digifort_monitor/
 ### 1. Clone o repositório e instale as dependências
 
 ```bash
-git clone https://github.com/Tebaum/asterixco_digifort_monitor
-cd asterixco_digifort_monitor
+git clone https://github.com/Tebaum/digifort-cftv-monitor
+cd digifort-cftv-monitor
 uv sync
 ```
 
